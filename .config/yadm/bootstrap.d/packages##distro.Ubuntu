@@ -18,6 +18,7 @@ sudo apt install -y \
     ca-certificates \
     curl \
     direnv \
+    exa \
     fish \
     fonts-ibm-plex \
     fzf \
