@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+
+function add_ppa() {
+    local ppa=$1
+    echo "Adding PPA $ppa"
+    sudo add-apt-repository -r -y "$ppa"
+    sudo add-apt-repository -y "$ppa"
+}
+
+add_ppa ppa:fish-shell/release-3
+add_ppa ppa:neovim-ppa/unstable
+
+echo "Install packages"
+sudo apt update
+sudo apt install -y \
+    bat \
+    build-essential \
+    ca-certificates \
+    curl \
+    direnv \
+    fish \
+    fonts-ibm-plex \
+    fzf \
+    git \
+    gnupg \
+    jq \
+    libbz2-dev \
+    libffi-dev \
+    liblzma-dev \
+    libncursesw5-dev \
+    libreadline-dev \
+    libsqlite3-dev \
+    libssl-dev \
+    libxml2-dev \
+    libxmlsec1-dev \
+    llvm \
+    lsb-release \
+    make \
+    neovim \
+    pipx \
+    python3-dev \
+    python3-pip \
+    python3-software-properties \
+    python3-venv \
+    python3 \
+    python-is-python3 \
+    ranger \
+    ripgrep \
+    stow \
+    tldr \
+    tmux \
+    wget \
+    xz-utils \
+    zlib1g-dev
+
+# change default shell to fish
+echo "Change default shell to fish"
+sudo chsh -s $(which fish) $(whoami)

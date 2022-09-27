@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "Install poetry"
+
+# dependencies
+sudo apt update
+sudo apt install -y curl python3
+
+# install
+if test -d "$HOME/.local/share/pypoetry"; then
+    echo "poetry is already installed"
+else
+    curl -sSL https://install.python-poetry.org | python3 -
+fi

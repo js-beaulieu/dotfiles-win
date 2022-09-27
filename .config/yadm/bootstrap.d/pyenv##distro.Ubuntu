@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+echo "Install pyenv"
+
+# dependencies
+sudo apt update
+sudo apt install -y curl python3
+
+# install
+if test -d "$HOME/.pyenv"; then
+    echo "pyenv is already installed"
+else
+    curl https://pyenv.run | bash
+fi
