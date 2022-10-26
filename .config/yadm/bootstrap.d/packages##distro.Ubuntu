@@ -51,6 +51,8 @@ sudo apt install -y \
     tldr \
     tmux \
     wget \
+    ubuntu-wsl \
+    wslu \
     xz-utils \
     zlib1g-dev
 

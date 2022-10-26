@@ -48,6 +48,9 @@ set -gx NODE_VERSION_PREFIX ""
 # pnpm
 set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 
+# set browser in WSL
+grep -iq Microsoft /proc/version && set -gx BROWSER wslview
+
 #----------------------------------------
 # path
 #----------------------------------------
@@ -103,6 +106,19 @@ function grc -d "List recently modified branches - 'git recent'"
     git for-each-ref \
       --sort=-committerdate refs/heads/ \
       --format='%(HEAD) %(color:red)%(objectname:short)%(color:reset) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'
+end
+
+function scratch -d "Create a scratch bash script in cwd" -a name
+    if not test -n "$name"
+        echo "File name not provided"
+        return 1
+    end
+
+    set filename "./_scratch_$name.sh"
+    touch "$filename"
+    echo "#!/usr/bin/env bash" > "$filename"
+    chmod +x "$filename"
+    echo "Scratch file created at $filename"
 end
 
 #----------------------------------------
