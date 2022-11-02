@@ -36,7 +36,6 @@ local options = {
   signcolumn = "yes",
   fillchars = "vert:|",
   laststatus = 2,
-  cc = "80,120",
   termguicolors = true,
 }
 

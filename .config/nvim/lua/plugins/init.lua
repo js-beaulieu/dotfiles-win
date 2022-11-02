@@ -52,14 +52,14 @@ packer.startup(function(use)
   use("mhinz/vim-signify")
   use("norcalli/nvim-colorizer.lua")
   use({
-    "navarasu/onedark.nvim",
+    "projekt0n/github-nvim-theme",
     config = require("plugins.colorscheme").config,
   })
   use({
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", "navarasu/onedark.nvim" },
+    requires = { "kyazdani42/nvim-web-devicons" },
     config = require("plugins.lualine").config,
-    after = "onedark.nvim",
+    after = "github-nvim-theme",
   })
   use({
     "nvim-neo-tree/neo-tree.nvim",

@@ -1,15 +1,12 @@
 local colorscheme = {}
 
 colorscheme.config = function()
-  local onedark = require("onedark")
-  onedark.setup({
-    style = "dark",
+  local theme = require("github-theme")
+  theme.setup({
+    theme_style = "dark_default",
     transparent = true,
-    code_style = {
-      keywords = "italic",
-    },
   })
-  onedark.load()
+  vim.cmd([[ highlight CursorColumn guibg=#161b22 ]])
 end
 
 return colorscheme
