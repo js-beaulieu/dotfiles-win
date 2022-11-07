@@ -6,6 +6,7 @@ colorscheme.config = function()
     lualine_style = "stealth",
     transparent = true,
     disable = { background = true },
+    high_visibility = { lighter = true },
   })
 
   vim.cmd "colorscheme material"
