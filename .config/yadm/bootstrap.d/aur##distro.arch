@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+# Install 
+if ! command -v paru; then
+    echo "install paru"
+
+    echo "install dependencies..."
+    sudo pacman -S --needed --noconfirm base-devel
+
+    echo "fetch and install paru..."
+    TMP_DIR=$(mktemp -d)
+    cd "$TMP_DIR" || exit 1
+    git clone https://aur.archlinux.org/paru.git
+    cd paru || exit 1
+    makepkg -si --noconfirm
+    rm -rf "$TMP_DIR"
+else
+    echo "paru is already installed"
+fi
+
+# Install packages
+echo "install packages..."
+
+paru -Syu --noconfirm
+#paru -S --noconfirm --needed \
+#apollo-rover
+

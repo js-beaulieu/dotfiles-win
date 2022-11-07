@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 sudo pacman -Syu --noconfirm
-sudo pacman -S --noconfirm \
+sudo pacman -S --noconfirm --needed \
 arch-install-scripts \
 autoconf \
 automake \
