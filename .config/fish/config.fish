@@ -76,9 +76,9 @@ abbr -a gdh 'git diff HEAD'
 abbr -a nr 'npm run'
 abbr -a vim nvim
 
-# this one is an alias cause the abbr is just too verbose for no good reason
 function cat
-    batcat $argv
+    set ex (command -v batcat || command -v bat || command -v cat)
+    eval (printf '%s %s\n' $ex $argv)
 end
 
 function mcd -d "Create a directory and cd into it"

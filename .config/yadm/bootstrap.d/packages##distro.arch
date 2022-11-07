@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+sudo pacman -Syu --noconfirm
+sudo pacman -S --noconfirm \
+arch-install-scripts \
+autoconf \
+automake \
+base \
+bat \
+binutils \
+bison \
+debugedit \
+direnv \
+docker \
+docker-compose \
+exa \
+fakeroot \
+fish \
+flex \
+fzf \
+gcc \
+git-lfs \
+github-cli \
+groff \
+jq \
+libtool \
+m4 \
+make \
+man-db \
+nano \
+neovim \
+openssh \
+patch \
+pkgconf \
+pyenv \
+python-pipx \
+ranger \
+ripgrep \
+starship \
+sudo \
+texinfo \
+tldr \
+tmux \
+vim \
+which \
+wslu \
+yadm \
+yq
+

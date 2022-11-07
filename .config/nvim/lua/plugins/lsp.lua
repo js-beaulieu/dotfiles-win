@@ -36,7 +36,6 @@ lsp.config = function()
     local is_available, requested_server = lsp_installer_servers.get_server(server)
 
     if is_available and not requested_server:is_installed() then
-      print("Installing LSP server " .. server)
       requested_server:install()
     end
   end
