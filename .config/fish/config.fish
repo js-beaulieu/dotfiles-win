@@ -68,7 +68,6 @@ fish_add_path "$PNPM_HOME"
 # aliases & functions
 #----------------------------------------
 alias ls exa
-alias cat batcat
 abbr -a cb 'xclip -se c'
 abbr -a ll 'ls -lh'
 abbr -a la 'ls -lha'

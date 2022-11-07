@@ -1,12 +1,16 @@
 local colorscheme = {}
 
 colorscheme.config = function()
-  local theme = require("github-theme")
+  local theme = require("material")
   theme.setup({
-    theme_style = "dark_default",
+    lualine_style = "stealth",
     transparent = true,
+    disable = { background = true },
   })
-  vim.cmd([[ highlight CursorColumn guibg=#161b22 ]])
+
+  vim.cmd "colorscheme material"
+  vim.g.material_style = "darker"
 end
 
 return colorscheme
+
