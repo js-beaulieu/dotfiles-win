@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+echo "Updating yadm repo origin URL"
+yadm remote set-url origin "git@github.com:js-beaulieu/dotfiles.git"
+
