@@ -100,6 +100,13 @@ packer.startup(function(use)
     },
     config = require("plugins.lsp").config,
   })
+  use({
+    "romgrk/barbar.nvim",
+    requires = {"kyazdani42/nvim-web-devicons"},
+    config = require("plugins.barbar").config,
+  })
+  use("kdheepak/lazygit.nvim")
+  use("tpope/vim-fugitive")
 
   -- Automatically set up configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then

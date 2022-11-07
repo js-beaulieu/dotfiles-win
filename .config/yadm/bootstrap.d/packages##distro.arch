@@ -23,6 +23,7 @@ git-lfs \
 github-cli \
 groff \
 jq \
+lazygit \
 libtool \
 m4 \
 make \
