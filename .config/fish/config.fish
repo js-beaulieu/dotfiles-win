@@ -31,6 +31,9 @@ set fish_color_user brgreen
 set -gx FZF_DEFAULT_COMMAND 'rg --files --no-ignore --hidden --follow --glob "!.git/*"'
 set -gx EDITOR nvim
 
+# disable rover CLI telemetry
+set -gx APOLLO_TELEMETRY_DISABLED 1
+
 # pyenv
 set -gx PYENV_ROOT $HOME/.pyenv
 
@@ -76,7 +79,7 @@ abbr -a gdh 'git diff HEAD'
 abbr -a nr 'npm run'
 abbr -a vim nvim
 
-function cat
+function cat -d "Alias cat to one of a list of executables, first available"
     set ex (command -v batcat || command -v bat || command -v cat)
     eval (printf '%s %s\n' $ex $argv)
 end
@@ -118,6 +121,22 @@ function scratch -d "Create a scratch bash script in cwd" -a name
     echo "#!/usr/bin/env bash" > "$filename"
     chmod +x "$filename"
     echo "Scratch file created at $filename"
+end
+
+function yep -d "Export packages for yadm (Yadm Export Packages)"
+    set bootstrap_dir "$HOME/.config/yadm/bootstrap.d"
+    if type -q apt
+        echo "Exporting apt dependencies"...
+        apt-mark showmanual > "$bootstrap_dir/apt.txt"
+    end
+    if type -q pacman
+        echo "Exporting pacman dependencies"...
+        pacman -Qqen > "$bootstrap_dir/pacman.txt"
+    end
+    if type -q paru
+        echo "Exporting paru dependencies"...
+        paru -Qqem > "$bootstrap_dir/paru.txt"
+    end
 end
 
 #----------------------------------------

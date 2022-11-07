@@ -7,5 +7,5 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm --needed curl
 
 # install
-curl -sSL https://rover.apollo.dev/nix/latest | sh
+curl -sSL https://rover.apollo.dev/nix/latest | sh -s -- --force
 

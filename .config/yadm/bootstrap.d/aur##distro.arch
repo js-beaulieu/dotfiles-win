@@ -22,6 +22,5 @@ fi
 echo "install packages..."
 
 paru -Syu --noconfirm
-#paru -S --noconfirm --needed \
-#apollo-rover
+paru -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/paru.txt"
 

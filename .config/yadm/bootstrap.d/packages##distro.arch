@@ -1,50 +1,10 @@
 #!/usr/bin/env bash
 
+# install packages
 sudo pacman -Syu --noconfirm
-sudo pacman -S --noconfirm --needed \
-arch-install-scripts \
-autoconf \
-automake \
-base \
-bat \
-binutils \
-bison \
-debugedit \
-direnv \
-docker \
-docker-compose \
-exa \
-fakeroot \
-fish \
-flex \
-fzf \
-gcc \
-git-lfs \
-github-cli \
-groff \
-jq \
-lazygit \
-libtool \
-m4 \
-make \
-man-db \
-nano \
-neovim \
-openssh \
-patch \
-pkgconf \
-pyenv \
-python-pipx \
-ranger \
-ripgrep \
-starship \
-sudo \
-texinfo \
-tldr \
-tmux \
-vim \
-which \
-wslu \
-yadm \
-yq
+sudo pacman -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/pacman.txt"
+
+# change default shell to fish
+echo "Change default shell to fish"
+sudo chsh -s /usr/bin/fish $(whoami)
 

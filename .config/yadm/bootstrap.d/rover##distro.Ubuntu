@@ -7,5 +7,5 @@ sudo apt update
 sudo apt install -y curl
 
 # install rover
-curl -sSL https://rover.apollo.dev/nix/latest | sh
+curl -sSL https://rover.apollo.dev/nix/latest | sh -s -- --force
 
