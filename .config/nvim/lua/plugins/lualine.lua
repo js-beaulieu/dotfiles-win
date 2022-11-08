@@ -6,6 +6,7 @@ lualine.config = function()
       theme = "material-stealth",
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
+      disabled_filetypes = { "packer", "neo-tree" },
     },
   })
 end
