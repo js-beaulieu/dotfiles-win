@@ -66,14 +66,11 @@ packer.startup(function(use)
     before = "material",
   })
   use({
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
+    "nvim-tree/nvim-tree.lua",
     requires = {
-      "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
-      "MunifTanjim/nui.nvim",
     },
-    config = require("plugins.neo-tree").config,
+    config = require("plugins.nvim-tree").config,
   })
   use({
     "nvim-treesitter/nvim-treesitter",

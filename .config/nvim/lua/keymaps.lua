@@ -87,8 +87,8 @@ keymap(
     {}
 )
 
---- neo-tree - tree file explorer
-keymap("n", "\\", ":Neotree toggle focus<cr>", { noremap = true, silent = true })
+--- nvim-tree - tree file explorer
+keymap("n", "\\", ":NvimTreeToggle<cr>", { noremap = true, silent = true })
 
 --- refactoring.nvim
 -- Remaps for the refactoring operations currently offered by the plugin
