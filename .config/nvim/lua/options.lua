@@ -37,9 +37,13 @@ local options = {
   fillchars = "vert:|",
   laststatus = 2,
   termguicolors = true,
+
+  -- use system clipboard
+  clipboard = "unnamedplus",
 }
 
 vim.opt.shortmess:append("c")
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+

@@ -1,16 +1,19 @@
 local colorscheme = {}
 
 colorscheme.config = function()
-  local theme = require("material")
+  local theme = require("onedarkpro")
   theme.setup({
-    lualine_style = "stealth",
-    transparent = true,
-    disable = { background = true },
-    high_visibility = { lighter = true },
+    options = {
+      bold = true,
+      cursorline = true,
+      terminal_colors = true,
+      transparency = true,
+      window_unfocused_color = true,
+    },
   })
 
-  vim.cmd "colorscheme material"
-  vim.g.material_style = "darker"
+  vim.cmd "colorscheme onedarkpro"
+  vim.cmd "hi link CursorColumn CursorLine"
 end
 
 return colorscheme

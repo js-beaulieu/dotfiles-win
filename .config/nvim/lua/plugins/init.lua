@@ -49,10 +49,14 @@ packer.startup(function(use)
       },
     },
   })
-  use("mhinz/vim-signify")
+  use({
+    "lewis6991/gitsigns.nvim",
+    config = require("plugins.gitsigns").config,
+  })
+  use("kdheepak/lazygit.nvim")
   use("norcalli/nvim-colorizer.lua")
   use({
-    "marko-cerovac/material.nvim",
+    "olimorris/onedarkpro.nvim",
     config = require("plugins.colorscheme").config,
   })
   use({
@@ -105,8 +109,6 @@ packer.startup(function(use)
     requires = {"kyazdani42/nvim-web-devicons"},
     config = require("plugins.barbar").config,
   })
-  use("kdheepak/lazygit.nvim")
-  use("tpope/vim-fugitive")
 
   -- Automatically set up configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then

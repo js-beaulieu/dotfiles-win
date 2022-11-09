@@ -30,7 +30,7 @@ neo_tree.config = function()
         hide_gitignored = false,
       },
       follow_current_file = true,
-      hijack_netrw_behavior = "open_default",
+      hijack_netrw_behavior = "open_current",
       use_libuv_file_watcher = true,
     },
   })
