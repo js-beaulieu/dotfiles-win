@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+# dependencies
+sudo pacman -Syu --noconfirm
+sudo pacman -S --noconfirm --needed pass gnupg fish
+
+# generate gnupg key
+
+

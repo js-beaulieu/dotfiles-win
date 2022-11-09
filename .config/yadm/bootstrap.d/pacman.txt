@@ -28,6 +28,7 @@ man-db
 nano
 neovim
 openssh
+pass
 patch
 pkgconf
 pyenv
