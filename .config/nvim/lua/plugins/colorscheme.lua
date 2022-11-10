@@ -13,7 +13,7 @@ colorscheme.config = function()
   })
 
   vim.cmd "colorscheme onedarkpro"
-  vim.cmd "hi link CursorColumn CursorLine"
+  vim.cmd "hi! link CursorColumn CursorLine"
 end
 
 return colorscheme

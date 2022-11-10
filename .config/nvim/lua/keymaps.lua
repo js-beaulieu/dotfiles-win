@@ -87,10 +87,6 @@ keymap(
     {}
 )
 
---- nvim-tree - tree file explorer
-keymap("n", "\\", ":NvimTreeFocus<cr>", { noremap = true, silent = true })
-keymap("n", "<leader>\\", ":NvimTreeToggle<cr>", { noremap = true, silent = true })
-
 --- refactoring.nvim
 -- Remaps for the refactoring operations currently offered by the plugin
 keymap(

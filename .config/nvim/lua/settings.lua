@@ -42,6 +42,9 @@ local options = {
   clipboard = "unnamedplus",
 }
 
+--- leader key
+vim.g.mapleader = ","
+
 vim.opt.shortmess:append("c")
 for k, v in pairs(options) do
   vim.opt[k] = v

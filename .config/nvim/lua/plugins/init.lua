@@ -35,6 +35,12 @@ packer.startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Plugins
+  use({
+    "nmac427/guess-indent.nvim",
+    config = function()
+        require("guess-indent").setup({})
+    end,
+  })
   use("christoomey/vim-tmux-navigator")
   use("editorconfig/editorconfig-vim")
   use({
@@ -66,11 +72,14 @@ packer.startup(function(use)
     before = "material",
   })
   use({
-    "nvim-tree/nvim-tree.lua",
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
     requires = {
+      "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
+      "MunifTanjim/nui.nvim",
     },
-    config = require("plugins.nvim-tree").config,
+    config = require("plugins.filetree").config,
   })
   use({
     "nvim-treesitter/nvim-treesitter",
