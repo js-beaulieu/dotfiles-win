@@ -42,6 +42,7 @@ texinfo
 tldr
 tmux
 vim
+wget
 which
 wslu
 yadm

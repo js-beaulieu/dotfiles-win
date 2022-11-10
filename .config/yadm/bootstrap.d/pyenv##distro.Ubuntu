@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-
-echo "Install pyenv"
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
 
 # dependencies
+log "Install dependencies"
 sudo apt update
 sudo apt install -y curl python3
 
 # install
 if test -d "$HOME/.pyenv"; then
-    echo "pyenv is already installed"
+    log "pyenv is already installed"
 else
+    log "Install pyenv"
     curl https://pyenv.run | bash
 fi

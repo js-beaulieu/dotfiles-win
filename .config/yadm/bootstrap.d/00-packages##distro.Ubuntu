@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
+
 function add_ppa() {
     local ppa=$1
-    echo "Adding PPA $ppa"
+    log "Adding PPA '$ppa'"
     sudo add-apt-repository -r -y "$ppa"
     sudo add-apt-repository -y "$ppa"
 }
@@ -10,11 +12,11 @@ function add_ppa() {
 add_ppa ppa:fish-shell/release-3
 add_ppa ppa:neovim-ppa/unstable
 
-echo "Install packages"
+log "Install packages"
 sudo apt update
 sudo apt upgrade -y
 sudo apt install -y < "$HOME/.config/yadm/bootstrap.d/apt.txt"
 
 # change default shell to fish
-echo "Change default shell to fish"
-sudo chsh -s $(which fish) $(whoami)
+log "Change default shell to fish"
+sudo chsh -s "$(which fish)" "$(whoami)"

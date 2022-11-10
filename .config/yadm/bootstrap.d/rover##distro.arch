@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-
-echo "Install Rover CLI"
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
 
 # dependencies
+log "Install dependencies"
 sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm --needed curl
 
 # install
+log "Install Rover CLI"
 curl -sSL https://rover.apollo.dev/nix/latest | sh -s -- --force
 

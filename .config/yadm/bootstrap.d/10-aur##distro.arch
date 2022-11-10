@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
 
 # Install 
 if ! command -v paru; then
-    echo "install paru"
-
-    echo "install dependencies..."
-    sudo pacman -S --needed --noconfirm base-devel
-
-    echo "fetch and install paru..."
+    log "install paru"
     TMP_DIR=$(mktemp -d)
     cd "$TMP_DIR" || exit 1
     git clone https://aur.archlinux.org/paru.git
@@ -15,12 +11,18 @@ if ! command -v paru; then
     makepkg -si --noconfirm
     rm -rf "$TMP_DIR"
 else
-    echo "paru is already installed"
+    log "paru is already installed"
 fi
 
 # Install packages
-echo "install packages..."
+log "install packages..."
 
 paru -Syu --noconfirm
 paru -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/paru.txt"
+if ! isWSL; then
+    log "not a WSL distribution, assuming GUI distribution"
+    paru -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/paru-gui.txt"
+else
+    log "detected WSL, skipping GUI apps"
+fi
 

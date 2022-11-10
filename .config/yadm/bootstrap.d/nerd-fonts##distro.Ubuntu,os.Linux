@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
-
-echo "Install Iosevka nerd font"
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
 
 # dependencies
+log "Install dependencies"
 sudo apt update
 sudo apt install -y git fontconfig
 
 # install font if missing
 found=$(fc-list "Iosevka Term" | wc -l)
 if [ "$found" -gt 0 ]; then
-    echo "Iosevka nerd font is already installed"
+    log "Iosevka nerd font is already installed"
 else
+    log "Install Iosevka nerd font"
     git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git /tmp/nerd-fonts
     cd /tmp/nerd-fonts && ./install.sh "Iosevka"
     rm -rf /tmp/nerd-fonts

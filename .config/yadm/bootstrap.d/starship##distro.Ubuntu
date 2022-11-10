@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
-
-echo "Install starship shell"
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
 
 # dependencies
+log "Installing dependencies..."
 sudo apt update
 sudo apt install -y curl
 
 # install
 if command -v starship &> /dev/null; then
-    echo "Starship prompt is already installed"
+    log "Starship prompt is already installed"
 else
+    log "Installing starship prompt..."
     curl -sS https://starship.rs/install.sh | sh -s -- --yes
 fi
+

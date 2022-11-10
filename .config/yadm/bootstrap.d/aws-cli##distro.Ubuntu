@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
-
-echo "Install AWS CLI"
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
 
 # dependencies
+log "Install dependencies"
 sudo apt update
 sudo apt install -y curl unzip
 
 # install
+log "Install AWS cli"
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"
-cd /tmp
+cd /tmp || exit 1
 unzip awscliv2.zip
 sudo ./aws/install
 rm -rf ./awscliv2.zip ./aws

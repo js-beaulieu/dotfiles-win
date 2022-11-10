@@ -5,6 +5,6 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/pacman.txt"
 
 # change default shell to fish
-echo "Change default shell to fish"
-sudo chsh -s /usr/bin/fish $(whoami)
+#echo "INFO" "Change default shell to fish"
+sudo chsh -s /usr/bin/fish "$(whoami)"
 
