@@ -33,17 +33,6 @@ module.config = function()
     },
   })
 
-  -- auto open on launch
-  vim.api.nvim_create_augroup("neotree_autoopen", { clear = true })
-  vim.api.nvim_create_autocmd("BufEnter", {
-    desc = "Open neo-tree on startup with directory",
-    group = "neotree_autoopen",
-    callback = function() 
-      local stats = vim.loop.fs_stat(vim.api.nvim_buf_get_name(0)) 
-      if stats and stats.type == "directory" then require("neo-tree.setup.netrw").hijack() end 
-    end,
-  })
-
   -- key mappings
   local map = vim.api.nvim_set_keymap
   local map_utils = require("utils.map")

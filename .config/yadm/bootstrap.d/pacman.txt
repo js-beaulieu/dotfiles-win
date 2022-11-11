@@ -1,6 +1,7 @@
 arch-install-scripts
 autoconf
 automake
+aws-cli-v2
 base
 bat
 binutils
