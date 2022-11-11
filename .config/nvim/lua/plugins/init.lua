@@ -46,15 +46,8 @@ packer.startup(function(use)
   use("editorconfig/editorconfig-vim")
   use({
     "ibhagwan/fzf-lua",
-    requires = {
-      "vijaymarupudi/nvim-fzf",
-      "kyazdani42/nvim-web-devicons",
-      {
-        "junegunn/fzf",
-        run = "./install --bin",
-        config = require("plugins.fzf").config,
-      },
-    },
+    requires = { "kyazdani42/nvim-web-devicons" },
+    config = require("plugins.fzf").config,
   })
   use({
     "lewis6991/gitsigns.nvim",

@@ -28,22 +28,28 @@ module.config = function()
     filesystem = {
       follow_current_file = true,
       group_empty_dirs = true,
-      hijack_netrw_behavior = "open_default",
+      hijack_netrw_behavior = "disabled",
       use_libuv_file_watcher = true,
+    },
+    event_handlers = {
+      {
+        event = "file_opened",
+        handler = function(file_path)
+          require("neo-tree").close_all()
+        end
+      },
+      {
+        event = "neo_tree_buffer_leave",
+        handler = function()
+          require("neo-tree").close_all()
+        end
+      },
     },
   })
 
   -- key mappings
   local map = vim.api.nvim_set_keymap
-  local map_utils = require("utils.map")
-  map("n", "\\", map_utils.lua_expr(function()
-    if vim.bo.filetype == "neo-tree" then
-      return ":noautocmd wincmd p<cr>"
-    else
-      return ":Neotree focus<cr>"
-    end
-  end), { noremap = true, silent = true, expr = true })
-  map("n", "<leader>\\", ":Neotree toggle<cr>", { noremap = true, silent = true })
+  map("n", "\\", ":Neotree toggle<cr>", { noremap = true, silent = true })
 end
 
 return module
