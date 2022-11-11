@@ -40,10 +40,6 @@ set -gx PYENV_ROOT $HOME/.pyenv
 # fix for java apps in tiling WMs
 set -gx _JAVA_AWT_WM_NONREPARENTING 1
 
-# flatpak
-set -l xdg_data_home $XDG_DATA_HOME "$HOME/.local/share"
-set -gx --path XDG_DATA_DIRS $xdg_data_home[1]/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share:/usr/share
-
 # nvm
 set -gx NODE_VERSIONS $HOME/.local/share/nvm
 set -gx NODE_VERSION_PREFIX ""
@@ -80,7 +76,7 @@ abbr -a nr 'npm run'
 abbr -a vim nvim
 
 function cat -d "Alias cat to one of a list of executables, first available"
-    set ex (command -v batcat || command -v bat || command -v cat)
+    set -l ex (command -v batcat || command -v bat || command -v cat)
     eval (printf '%s %s\n' $ex $argv)
 end
 
@@ -116,7 +112,7 @@ function scratch -d "Create a scratch bash script in cwd" -a name
         return 1
     end
 
-    set filename "./_scratch_$name.sh"
+    set -l filename "./_scratch_$name.sh"
     touch "$filename"
     echo "#!/usr/bin/env bash" > "$filename"
     chmod +x "$filename"
@@ -124,7 +120,7 @@ function scratch -d "Create a scratch bash script in cwd" -a name
 end
 
 function yep -d "Export packages for yadm (Yadm Export Packages)"
-    set bootstrap_dir "$HOME/.config/yadm/bootstrap.d"
+    set -l bootstrap_dir "$HOME/.config/yadm/bootstrap.d"
     if type -q apt
         echo "Exporting apt dependencies"...
         apt-mark showmanual > "$bootstrap_dir/apt.txt"
@@ -137,6 +133,18 @@ function yep -d "Export packages for yadm (Yadm Export Packages)"
         echo "Exporting paru dependencies"...
         paru -Qqem > "$bootstrap_dir/paru.txt"
     end
+end
+
+function fish-reload -d "Reload fish in place"
+    # shamelessly taken from oh-my-fish
+    # https://github.com/oh-my-fish/oh-my-fish/blob/90f875e02dbb63a7e12430ceb034206bea278c28/pkg/omf/functions/core/omf.reload.fish#L4
+    history --save
+    set -gx dirprev $dirprev
+    set -gx dirnext $dirnext
+    set -gx dirstack $dirstack
+    set -gx fish_greeting ''
+
+    exec fish
 end
 
 #----------------------------------------

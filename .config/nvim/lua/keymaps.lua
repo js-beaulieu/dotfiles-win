@@ -7,14 +7,6 @@ local keymap = vim.api.nvim_set_keymap
 --- clear search after hitting backspace in normal mode
 keymap("n", "<backspace>", ":noh<cr>", { noremap = true, silent = true })
 
---- fzf
-keymap("n", "<C-P>", "<cmd>lua require('fzf-lua').files()<cr>", {
-    noremap = true,
-    silent = true,
-})
-keymap("n", "<leader><leader>f", "<cmd>lua require('fzf-lua').live_grep()<cr>", { silent = true })
-keymap("", "<leader><leader>b", "<cmd>lua require('fzf-lua').buffers()<cr>", { silent = true })
-
 --- hop - EasyMotion-like movement
 keymap(
     "n",

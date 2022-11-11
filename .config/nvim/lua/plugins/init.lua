@@ -35,6 +35,7 @@ packer.startup(function(use)
   use("wbthomason/packer.nvim")
 
   -- Plugins
+  use("dag/vim-fish")
   use({
     "nmac427/guess-indent.nvim",
     config = function()
