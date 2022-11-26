@@ -45,6 +45,9 @@ local options = {
 --- leader key
 vim.g.mapleader = ","
 
+--- 
+vim.cmd([[autocmd FocusGained * checktime]])
+
 vim.opt.shortmess:append("c")
 for k, v in pairs(options) do
   vim.opt[k] = v

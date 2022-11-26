@@ -42,7 +42,16 @@ packer.startup(function(use)
         require("guess-indent").setup({})
     end,
   })
-  use("christoomey/vim-tmux-navigator")
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = require("plugins.markdown").config,
+    ft = { "markdown" },
+  })
+  use({
+    "christoomey/vim-tmux-navigator",
+    config = require("plugins.tmux").config,
+  })
   use("editorconfig/editorconfig-vim")
   use({
     "ibhagwan/fzf-lua",
