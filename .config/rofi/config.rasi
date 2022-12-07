@@ -1,0 +1,19 @@
+configuration {
+  font: "Noto Sans Medium 10";
+  show-icons: true;
+  
+  run {
+    display-name: "";
+  }
+  
+  window {
+    display-name: "";
+  }
+  
+  timeout {
+    delay: 10;
+    action: "kb-cancel";
+  }
+}
+
+@theme "onedark"
