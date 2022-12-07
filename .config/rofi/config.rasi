@@ -1,13 +1,17 @@
 configuration {
-  font: "Noto Sans Medium 10";
+  font: "Iosevka Term bold 11";
   show-icons: true;
   
   run {
-    display-name: "";
+    display-name: "  ";
+  }
+
+  drun {
+    display-name: "  ";
   }
   
   window {
-    display-name: "";
+    display-name: "  ";
   }
   
   timeout {

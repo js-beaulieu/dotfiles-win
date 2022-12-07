@@ -13,24 +13,26 @@
   padding: 0;
   spacing: 0;
 
-  bg: #282a33ee; // matching qogir-dark
+  bg: #282a33cc; // matching qogir-dark
   // bg: #282C34; // original onedark color
   fg: #ABB2BF;
   blue: #61AFEF;
-  blue-alt: #61AFEF15;
+  blue-alt: #61AFEF25;
   red: #E06C75;
-  red-alt: #E06C7515;
+  red-alt: #E06C7525;
 
   background-color: transparent;
   text-color: @fg;
+  transparency: "real";
 }
 
 window {
-  transparency: "real";
   width: 600px;
   background-color: @bg;
-  border: 10px;
-  border-color: @bg;
+  border-color: @red;
+  border: 1px;
+  border-radius: 10px;
+  padding: 10px;
 }
 
 mainbox {
@@ -38,8 +40,7 @@ mainbox {
 }
 
 inputbar {
-  border: 0 0 0 1px;
-  border-color: @blue;
+  border-radius: 5px;
   children: [entry];
   margin: 0 0 10px 0;
 }
@@ -51,11 +52,11 @@ entry {
 }
 
 listview {
-  lines: 12;
+  lines: 10;
 }
 
 element {
-  border: 0 0 0 1px;
+  border-radius: 5px;
   children: [element-index, element-icon, element-text];
 }
 
@@ -66,7 +67,7 @@ element selected {
 
 element-index {
   width: 30px;
-  padding: 6px 10px;
+  padding: 10px;
 }
 
 element-icon {
@@ -74,7 +75,7 @@ element-icon {
 }
 
 element-text {
-  padding: 6px 10px;
+  padding: 10px 10px;
   background-color: transparent;
 }
 
