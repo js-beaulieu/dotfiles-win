@@ -50,6 +50,9 @@ set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 # set browser in WSL
 grep -iq Microsoft /proc/version && set -gx BROWSER wslview
 
+# qt on bspwm
+set -gx QT_QPA_PLATFORMTHEME qt6ct
+
 #----------------------------------------
 # path
 #----------------------------------------

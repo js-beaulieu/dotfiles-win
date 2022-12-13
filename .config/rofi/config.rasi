@@ -1,6 +1,7 @@
 configuration {
-  font: "Iosevka Term bold 11";
+  font: "IBM Plex Sans medium 10";
   show-icons: true;
+  monitor: -1;
   
   run {
     display-name: "  ";
