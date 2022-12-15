@@ -35,7 +35,7 @@ local options = {
   showmode = false,
   signcolumn = "yes",
   fillchars = "vert:|",
-  laststatus = 2,
+  laststatus = 3,
   termguicolors = true,
 
   -- use system clipboard

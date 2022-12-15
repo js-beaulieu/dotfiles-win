@@ -1,7 +1,7 @@
 [global]
     # colors
-    background = "#282c34"
-    separator_color = "#282c34"
+    background = "#282c3499"
+    separator_color = "#282c3422"
     foreground = "#abb2bf"
     frame_color = "#abb2bf"
 
@@ -15,7 +15,7 @@
     transparency = 0
     padding = 10
     horizontal_padding = 10
-    gap_size = 10
+    separator_size = 1
     ellipsize = end
     ignore_newline = no
     show_indicators = yes
@@ -26,10 +26,10 @@
     # size and position
     monitor = 0
     follow = keyboard
-    origin = top-right
+    origin = top-center
     width = 500
     height = 200
-    offset = 15x15
+    offset = 0x60
 
     # key bindings
     close = ctrl+space
@@ -39,8 +39,8 @@
 
     # mouse bindings
     mouse_left_click = do_action
-    mouse_middle_click = close_all
-    mouse_right_click = close_current
+    mouse_middle_click = close_current
+    mouse_right_click = context
 
     # behavior
     stack_duplicates = true
@@ -57,7 +57,7 @@
 
     # config
     icon_path = /usr/share/icons/gnome/16x16/status/:/usr/share/icons/gnome/16x16/devices/
-    dmenu = /usr/bin/rofi -dmenu -p dunst:
+    dmenu = /usr/bin/rofi -dmenu -i -p dunst
     browser = /usr/bin/firefox -new-tab
     title = Dunst
     class = Dunst

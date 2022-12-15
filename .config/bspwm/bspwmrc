@@ -4,67 +4,82 @@ export QT_QPA_PLATFORMTHEME=qt6ct
 
 export BSPWMRC_GAP_INNER=10
 export BSPWMRC_GAP_OUTER=20
-export BSPWMRC_POLYBAR_HEIGHT=30
-export BSPWMRC_POLYBAR_BORDER_SIZE=1
+export BSPWMRC_POLYBAR_WIDTH="100%:-$((BSPWMRC_GAP_OUTER * 2))"
+export BSPWMRC_POLYBAR_HEIGHT=28
+export BSPWMRC_POLYBAR_BORDER_SIZE=2
 
+# wrapper using pgrep to start apps only if they're not already running
 function autostart() {
-    local app="$1"
+    if [ $# -eq 0 ]; then
+        >&2 echo "At least one argument expected"
+        exit 1
+    fi
+
+    local process_name="$1"
     shift
-    pgrep -x "$app" > /dev/null || "$app" "$@"
+
+    if [ $# -eq 0 ]; then
+        echo "Only one argument $process_name"
+        # if there was only one argument, the process name and command to run are the same
+        pgrep -x "$process_name" > /dev/null || "$process_name" &
+    else
+        echo "More than one argument $process_name, $*"
+        # if we pass more than one argument, the first argument is
+        # the process name we're looking at before running, and the rest of the arguments
+        # are the command used to launch the process. this is useful for applications like
+        # bitwarden, that runs under a process started by electron, but is started with
+        # `bitwarden-desktop`
+        pgrep -alf "$process_name" > /dev/null || eval "$*" &
+    fi
 }
 
+# extract a color value from the Xresources file
 function xresource() {
     xrdb -query | grep -E "^(bspwm|\*)\.$1:" | sed -r "s/^[^:]+:\s+//" | tail -n 1
 }
 
-function setup() {
-    xrdb -merge "$HOME"/.Xresources
-    autorandr -c
-}
+# setup
+xrdb -merge "$HOME"/.Xresources
+autorandr -c
 
-function startup_apps() {
-    [ -f "$HOME"/.fehbg ] && "$HOME"/.fehbg
-    "$HOME"/.config/polybar/launch.sh &
-    xsetroot -cursor_name left_ptr &
-    bitwarden-desktop &
-}
+# autostart
+[ -f "$HOME"/.fehbg ] && "$HOME"/.fehbg
+"$HOME"/.config/polybar/launch.sh &
+xsetroot -cursor_name left_ptr &
 
-function autostart_apps() {
-    autostart sxhkd &
-    autostart picom -b &
-    autostart dunst &
-    autostart nm-applet &
-    autostart kdeconnect-indicator &
-    autostart flameshot &
-}
+autostart sxhkd
+autostart picom picom -b
+autostart dunst
+autostart nm-applet
+autostart kdeconnect-indicator
+autostart flameshot
+autostart bitwarden bitwarden-desktop
+autostart polkit-gnome-authentication-agent-1 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+autostart playerctl "playerctl -f '{{playerName}}' status --follow > /tmp/playerctl-status"
 
-function bspwm_config() {
-    bspc wm --reorder-monitors DisplayPort HDMI-A-1 HDMI-A-0
-    bspc monitor DisplayPort-0 -d 1 2 3 4
-    bspc monitor HDMI-A-1 -d 5 6 7
-    bspc monitor HDMI-A-0 -d 8 9 0
+# bspwm config
+bspc wm --reorder-monitors DisplayPort HDMI-A-1 HDMI-A-0
+bspc monitor DisplayPort-0 -d 1 2 3 4
+bspc monitor HDMI-A-1 -d 5 6 7
+bspc monitor HDMI-A-0 -d 8 9 0
 
-    bspc config border_width "$BSPWMRC_POLYBAR_BORDER_SIZE"
-    bspc config window_gap "$BSPWMRC_GAP_INNER"
-    bspc config left_padding "$((BSPWMRC_GAP_OUTER-BSPWMRC_GAP_INNER))"
-    bspc config right_padding "$((BSPWMRC_GAP_OUTER-BSPWMRC_GAP_INNER))"
-    bspc config top_padding "$((BSPWMRC_GAP_OUTER-BSPWMRC_GAP_INNER))"
-    bspc config bottom_padding "$((BSPWMRC_POLYBAR_HEIGHT+BSPWMRC_GAP_OUTER-(BSPWMRC_GAP_INNER/2)))"
-    bspc config split_ratio 0.5
-    bspc config borderless_monocle true
-    bspc config gapless_monocle false
-    bspc config leaf_monocle true
-    bspc config pointer_follows_focus false
-    bspc config focus_follows_pointer false
+bspc config border_width "$BSPWMRC_POLYBAR_BORDER_SIZE"
+bspc config window_gap "$BSPWMRC_GAP_INNER"
+bspc config left_padding "$((BSPWMRC_GAP_OUTER-BSPWMRC_GAP_INNER))"
+bspc config right_padding "$((BSPWMRC_GAP_OUTER-BSPWMRC_GAP_INNER))"
+bspc config bottom_padding "$((BSPWMRC_GAP_OUTER-BSPWMRC_GAP_INNER))"
+bspc config top_padding "$((BSPWMRC_GAP_OUTER + BSPWMRC_POLYBAR_HEIGHT))"
+bspc config normal_border_color "$(xresource darker)"
+bspc config active_border_color "$(xresource foreground)"
+bspc config focused_border_color "$(xresource color1)"
+bspc config presel_feedback_color "$(xresource color10)"
 
-    bspc config normal_border_color "$(xresource darker)"
-    bspc config active_border_color "$(xresource foreground)"
-    bspc config focused_border_color "$(xresource color1)"
-    bspc config presel_feedback_color "$(xresource color10)"
-}
+bspc config split_ratio 0.5
+bspc config borderless_monocle true
+bspc config gapless_monocle false
+bspc config pointer_follows_focus false
+bspc config focus_follows_pointer false
 
-setup
-startup_apps
-autostart_apps
-bspwm_config
+# window rules
+bspc rule -a jsb-pkg-updates monitor=primary layer=above state=floating focus=on follow=on
 

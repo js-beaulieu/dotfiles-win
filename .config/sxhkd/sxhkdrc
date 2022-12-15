@@ -8,7 +8,11 @@
 
 # program launcher
 {alt, super} + slash
-    rofi -combi-modi run,drun,window -show combi -modi combi -theme onedark
+    rofi -show combi
+
+# window switcher
+alt + Tab
+	rofi -show window
 
 # make sxhkd reload its configuration files:
 super + Escape

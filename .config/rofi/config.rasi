@@ -1,18 +1,18 @@
 configuration {
-  font: "IBM Plex Sans medium 10";
-  show-icons: true;
+  combi-modi: "run,drun";
+  matching: "fuzzy";
   monitor: -1;
+  scroll-method: 1;
+  show-icons: true;
+  sorting-method: "fzf";
+  terminal: "alacritty";
   
-  run {
-    display-name: "  ";
-  }
-
-  drun {
-    display-name: "  ";
+  combi {
+    display-name: "run";
   }
   
   window {
-    display-name: "  ";
+    display-name: "windows";
   }
   
   timeout {

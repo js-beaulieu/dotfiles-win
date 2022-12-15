@@ -1,85 +1,134 @@
-/*
- * ROFI color theme
- *
- * Based on Something Found in the Internet
- *
- * User: Contributors
- * Copyright: *!
- */
-
+// ---------------------------------------- 
+// Global configuration
+// ---------------------------------------- 
 * {
+  // reset
   border: 0;
   margin: 0;
   padding: 0;
   spacing: 0;
 
-  bg: #282a33cc; // matching qogir-dark
-  // bg: #282C34; // original onedark color
-  fg: #ABB2BF;
-  blue: #61AFEF;
-  blue-alt: #61AFEF25;
-  red: #E06C75;
-  red-alt: #E06C7525;
+  // variables
+  var-bg: #282a33dd; // matching qogir-dark, original OneDark color is #282a33
+  var-fg: #ABB2BF;
+  var-blue: #61AFEF;
+  var-blue-alt: #61AFEF25;
+  var-red: #E06C75;
+  var-red-alt: #E06C7525;
+  var-font: "IBM Plex Sans Medium 10";
+  var-font-bold: "IBM Plex Sans Bold 10";
+   
+  var-window-width: 600px;
+  var-padding: 8px;
+  var-spacing: 0 0 8px 0;
+  var-border-radius: 5px;
+  var-border-size: 2px;
 
+  // global styles
   background-color: transparent;
-  text-color: @fg;
+  text-color: @var-fg;
   transparency: "real";
 }
 
+// ---------------------------------------- 
+// Main window
+// ---------------------------------------- 
 window {
-  width: 600px;
-  background-color: @bg;
-  border-color: @red;
-  border: 1px;
-  border-radius: 10px;
-  padding: 10px;
+  font: @var-font;
+  width: @var-window-width;
+  background-color: @var-bg;
+  border-color: @var-red;
+  border: @var-border-size;
+  border-radius: @var-padding;
+  padding: @var-padding;
+
+  location: center;
+  anchor: center;
 }
 
 mainbox {
   children: [inputbar, listview];
 }
 
+// ---------------------------------------- 
+// Input bar
+// ---------------------------------------- 
 inputbar {
-  border-radius: 5px;
-  children: [entry];
-  margin: 0 0 10px 0;
+  children: [prompt, textbox-prompt-colon, entry];
+  margin: @var-spacing;
+  text-color: @var-fg;
+  font: @var-font-bold;
 }
 
+prompt,
+textbox-prompt-colon,
 entry {
-  background-color: @blue-alt;
-  padding: 10px;
-  text-color: @blue;
+  padding: @var-padding;
 }
 
+prompt {
+  text-color: @var-blue;
+  background-color: @var-blue-alt;
+  border-radius: @var-border-radius;
+}
+
+textbox-prompt-colon {
+  content: "»";
+  expand: false;
+  padding: @var-padding;
+}
+
+// ---------------------------------------- 
+// App list
+// ---------------------------------------- 
 listview {
   lines: 10;
+  spacing: 5px;
+  scrollbar: true;
+  scrollbar-width: 2px;
+  fixed-height: true;
+}
+
+#scrollbar {
+  background-color: @var-red-alt;
+  handle-color: @var-red;
+  handle-width: 2px;
+}
+#scrollbar selected.handle {
+  background-color: @var-red;
 }
 
 element {
-  border-radius: 5px;
-  children: [element-index, element-icon, element-text];
+  border-radius: @var-border-radius;
+  children: [element-icon, element-index, element-text];
+}
+
+element-icon,
+element-index,
+element-text {
+  vertical-align: 0.5;
+  padding: @var-padding;
 }
 
 element selected {
-  border-color: @red;
-  background-color: @red-alt;
+  border-color: @var-red;
+  background-color: @var-red-alt;
+}
+
+element-icon {
+  size: 26px;
+}
+
+element-text {
+  expand: true;
 }
 
 element-index {
   width: 30px;
-  padding: 10px;
-}
-
-element-icon {
-  padding: 0 10px;
-}
-
-element-text {
-  padding: 10px 10px;
-  background-color: transparent;
+  margin-right: 0;
 }
 
 element-text selected,
 element-index selected {
-  text-color: @red;
+  text-color: @var-red;
 }

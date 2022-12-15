@@ -2,13 +2,13 @@
 . "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
 
 # Install 
-if ! command -v paru; then
-    log "install paru"
+if ! command -v yay; then
+    log "install AUR helper"
     TMP_DIR=$(mktemp -d)
     cd "$TMP_DIR" || exit 1
-    git clone https://aur.archlinux.org/paru.git
-    cd paru || exit 1
-    makepkg -si --noconfirm
+    git clone https://aur.archlinux.org/yay.git
+    cd yay || exit 1
+    makepkg -si
     rm -rf "$TMP_DIR"
 else
     log "paru is already installed"
@@ -17,11 +17,11 @@ fi
 # Install packages
 log "install packages..."
 
-paru -Syu --noconfirm
-paru -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/paru.txt"
+yay -Syu --noconfirm
+yay -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/aur.txt"
 if ! isWSL; then
     log "not a WSL distribution, assuming GUI distribution"
-    paru -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/paru-gui.txt"
+    paru -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/aur-gui.txt"
 else
     log "detected WSL, skipping GUI apps"
 fi

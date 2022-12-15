@@ -8,11 +8,11 @@ colorscheme.config = function()
       cursorline = true,
       terminal_colors = true,
       transparency = true,
-      window_unfocused_color = true,
+      highlight_inactive_windows = true,
     },
   })
 
-  vim.cmd "colorscheme onedarkpro"
+  vim.cmd "colorscheme onedark"
   vim.cmd "hi! link CursorColumn CursorLine"
 end
 

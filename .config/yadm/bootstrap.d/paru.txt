@@ -1,3 +1,0 @@
-paru
-saml2aws
-win32yank-bin

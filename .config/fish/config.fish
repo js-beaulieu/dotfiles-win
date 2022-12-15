@@ -133,9 +133,9 @@ function yep -d "Export packages for yadm (Yadm Export Packages)"
         echo "Exporting pacman dependencies"...
         pacman -Qqen > "$bootstrap_dir/pacman.txt"
     end
-    if type -q paru
-        echo "Exporting paru dependencies"...
-        paru -Qqem > "$bootstrap_dir/paru.txt"
+    if type -q yay
+        echo "Exporting aur dependencies"...
+        yay -Qqem > "$bootstrap_dir/aur.txt"
     end
 end
 
