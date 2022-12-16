@@ -40,8 +40,8 @@ def handler_count(_: Any) -> None:
 def handler_install(_: Any) -> None:
     try:
         subprocess.run(
-                ["alacritty", "-o", "window.dimensions.columns=120", "-o", "window.dimensions.lines=30", "--class", "jsb-pkg-updates", "-e", "yay", "-Syu"],
-                check=True,
+            ["kitty", "-o", "initial_window_width=100c", "-o", "initial_window_height=30c", "--class", "jsb-pkg-updates", "yay", "-Syu"],
+            check=True,
         )
     except:
         notify(SCRIPT_NAME, "Updates failed to install", "critical")

@@ -4,7 +4,7 @@
 
 # terminal emulator
 {alt, super} + Return
-	alacritty
+	kitty
 
 # program launcher
 {alt, super} + slash
