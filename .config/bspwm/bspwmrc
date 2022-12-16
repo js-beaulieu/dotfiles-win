@@ -6,7 +6,7 @@ export BSPWMRC_GAP_INNER=10
 export BSPWMRC_GAP_OUTER=20
 export BSPWMRC_POLYBAR_WIDTH="100%:-$((BSPWMRC_GAP_OUTER * 2))"
 export BSPWMRC_POLYBAR_HEIGHT=28
-export BSPWMRC_POLYBAR_BORDER_SIZE=2
+export BSPWMRC_POLYBAR_BORDER_SIZE=1
 
 # wrapper using pgrep to start apps only if they're not already running
 function autostart() {
@@ -81,5 +81,5 @@ bspc config pointer_follows_focus false
 bspc config focus_follows_pointer false
 
 # window rules
-bspc rule -a jsb-pkg-updates monitor=primary layer=above state=floating focus=on follow=on
+bspc rule -a jsb-pkg-updates monitor=primary layer=above state=floating focus=on follow=on center=on locked=on
 

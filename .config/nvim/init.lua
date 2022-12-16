@@ -1,12 +1,28 @@
--- load modular configuration
-require("settings")
-require("keymaps")
-require("plugins")
+local namespace = "me"
 
--- reload config on saving a configuration lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost $HOME/.config/nvim/{init,lua/settings,lua/keymaps,lua/plugins/*}.lua source $HOME/.config/nvim/init.lua | PackerSync
-  augroup end
-]])
+-- load modular configuration
+require(namespace .. ".settings")
+require(namespace .. ".keymaps")
+require(namespace .. ".plugins")
+
+-- reload neovim config when modifying one of the files
+vim.api.nvim_create_augroup("packer_user_config", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+  group = "packer_user_config",
+  pattern = {
+    vim.fn.expand("~") .. "/.config/nvim/init.lua",
+    vim.fn.expand("~") .. "/.config/nvim/lua/" .. namespace .. "/**/*.lua",
+  },
+  callback = function()
+    -- clear lua cache
+    for name, _ in pairs(package.loaded) do
+      if name:match("^" .. namespace) then
+        package.loaded[name] = nil
+      end
+    end
+
+    -- reload config
+    dofile(vim.env.MYVIMRC)
+    vim.cmd("silent !notify-send 'neovim' 'Configuration reloaded'")
+  end,
+})

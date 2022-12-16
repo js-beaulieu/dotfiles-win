@@ -45,33 +45,33 @@ packer.startup(function(use)
   use({
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install",
-    setup = require("plugins.markdown").config,
+    setup = require("me.plugins.markdown").config,
     ft = { "markdown" },
   })
   use({
     "christoomey/vim-tmux-navigator",
-    config = require("plugins.tmux").config,
+    config = require("me.plugins.tmux").config,
   })
   use("editorconfig/editorconfig-vim")
   use({
     "ibhagwan/fzf-lua",
     requires = { "kyazdani42/nvim-web-devicons" },
-    config = require("plugins.fzf").config,
+    config = require("me.plugins.fzf").config,
   })
   use({
     "lewis6991/gitsigns.nvim",
-    config = require("plugins.gitsigns").config,
+    config = require("me.plugins.gitsigns").config,
   })
   use("kdheepak/lazygit.nvim")
   use("norcalli/nvim-colorizer.lua")
   use({
     "olimorris/onedarkpro.nvim",
-    config = require("plugins.colorscheme").config,
+    config = require("me.plugins.colorscheme").config,
   })
   use({
     "nvim-lualine/lualine.nvim",
     requires = { "kyazdani42/nvim-web-devicons" },
-    config = require("plugins.lualine").config,
+    config = require("me.plugins.lualine").config,
     before = "material",
   })
   use({
@@ -82,7 +82,7 @@ packer.startup(function(use)
       "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    config = require("plugins.filetree").config,
+    config = require("me.plugins.filetree").config,
   })
   use({
     "nvim-treesitter/nvim-treesitter",
@@ -91,7 +91,7 @@ packer.startup(function(use)
   use({
     "phaazon/hop.nvim",
     branch = "v1",
-    config = require("plugins.hop").config,
+    config = require("me.plugins.hop").config,
   })
   use("rbgrouleff/bclose.vim")
   use("tpope/vim-commentary")
@@ -111,12 +111,12 @@ packer.startup(function(use)
       "L3MON4D3/LuaSnip",
       { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } },
     },
-    config = require("plugins.lsp").config,
+    config = require("me.plugins.lsp").config,
   })
   use({
     "romgrk/barbar.nvim",
     requires = {"kyazdani42/nvim-web-devicons"},
-    config = require("plugins.barbar").config,
+    config = require("me.plugins.barbar").config,
   })
 
   -- Automatically set up configuration after cloning packer.nvim

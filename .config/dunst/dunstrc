@@ -25,7 +25,7 @@
 
     # size and position
     monitor = 0
-    follow = keyboard
+    follow = false
     origin = top-center
     width = 500
     height = 200

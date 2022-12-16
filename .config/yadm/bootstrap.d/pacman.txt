@@ -28,6 +28,7 @@ dmidecode
 docker-compose
 dosfstools
 dunst
+dvtm
 easyeffects
 efibootmgr
 evolution
@@ -69,6 +70,7 @@ libreoffice-fresh
 libtool
 lightdm
 lightdm-gtk-greeter
+lightdm-gtk-greeter-settings
 linux-firmware
 linux-lts
 lsof
@@ -107,6 +109,7 @@ pkgconf
 plank
 playerctl
 polybar
+pulsemixer
 pyenv
 python-pipx
 python-poetry

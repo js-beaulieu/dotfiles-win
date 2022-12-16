@@ -19,10 +19,4 @@ log "install packages..."
 
 yay -Syu --noconfirm
 yay -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/aur.txt"
-if ! isWSL; then
-    log "not a WSL distribution, assuming GUI distribution"
-    paru -S --noconfirm --needed - < "$HOME/.config/yadm/bootstrap.d/aur-gui.txt"
-else
-    log "detected WSL, skipping GUI apps"
-fi
 
