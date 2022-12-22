@@ -6,6 +6,10 @@
 {alt, super} + Return
 	kitty
 
+# dropdown/scratch terminal emulator
+super + alt + Return
+	tdrop -ma -w 50% -x 25% -y 48 -a kitty
+
 # program launcher
 {alt, super} + slash
     rofi -show combi
@@ -17,6 +21,12 @@ alt + Tab
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd && notify-send "sxhkd" "config reloaded"
+
+#
+# screen locking
+#
+super + alt + l
+	light-locker-command -l
 
 #
 # bspwm hotkeys

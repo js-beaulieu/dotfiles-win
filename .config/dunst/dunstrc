@@ -1,7 +1,7 @@
 [global]
     # colors
-    background = "#282c3499"
-    separator_color = "#282c3422"
+    background = "#282c34bb"
+    separator_color = "#282c3488"
     foreground = "#abb2bf"
     frame_color = "#abb2bf"
 
@@ -11,7 +11,7 @@
     markup = full
     format = "<b>%s</b>\n%b"
     alignment = left
-    frame_width = 1
+    frame_width = ${BSPWMRC_BORDER_SIZE}
     transparency = 0
     padding = 10
     horizontal_padding = 10

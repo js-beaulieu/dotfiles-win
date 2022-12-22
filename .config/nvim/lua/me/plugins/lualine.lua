@@ -4,11 +4,29 @@ lualine.config = function()
   require("lualine").setup({
     options = {
       theme = "auto",
-      globalstatus = true,
+      globalstatus = false,
+      section_separators = { left = "", right = "" },
       component_separators = { left = "", right = "" },
-      section_separators = { left = "", right = "" },
-      disabled_filetypes = { "packer", "neo-tree" },
+      disabled_filetypes = { },
     },
+    sections = {
+      -- left side
+      lualine_a = {
+        {
+          "mode",
+          fmt = string.lower,
+          separator = { left = "", right = "" }
+        }
+      },
+
+      -- right side
+      lualine_z = {
+        {
+          'location',
+          separator = { left = "", right = "" }
+        }
+      },
+    }
   })
 end
 

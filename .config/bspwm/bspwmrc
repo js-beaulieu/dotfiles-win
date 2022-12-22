@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-export QT_QPA_PLATFORMTHEME=qt6ct
+export QT_STYLE_OVERRIDE=kvantum
 
 export BSPWMRC_GAP_INNER=10
 export BSPWMRC_GAP_OUTER=20
+export BSPWMRC_BORDER_SIZE=2
 export BSPWMRC_POLYBAR_WIDTH="100%:-$((BSPWMRC_GAP_OUTER * 2))"
 export BSPWMRC_POLYBAR_HEIGHT=28
-export BSPWMRC_POLYBAR_BORDER_SIZE=1
 
 # wrapper using pgrep to start apps only if they're not already running
 function autostart() {
@@ -47,15 +47,22 @@ autorandr -c
 "$HOME"/.config/polybar/launch.sh &
 xsetroot -cursor_name left_ptr &
 
+# timeout
+xset s on
+xset x 300
+
 autostart sxhkd
 autostart picom picom -b
-autostart dunst
+autostart dunst "dunst -config <(envsubst < $HOME/.config/dunst/dunstrc)"
 autostart nm-applet
 autostart kdeconnect-indicator
 autostart flameshot
 autostart bitwarden bitwarden-desktop
 autostart polkit-gnome-authentication-agent-1 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 autostart playerctl "playerctl -f '{{playerName}}' status --follow > /tmp/playerctl-status"
+autostart light-locker light-locker --no-late-locking --lock-after-screensaver=60 --lock-on-suspend
+autostart xss-lock xss-lock slock
+autostart insync insync start
 
 # bspwm config
 bspc wm --reorder-monitors DisplayPort HDMI-A-1 HDMI-A-0
@@ -63,7 +70,7 @@ bspc monitor DisplayPort-0 -d 1 2 3 4
 bspc monitor HDMI-A-1 -d 5 6 7
 bspc monitor HDMI-A-0 -d 8 9 0
 
-bspc config border_width "$BSPWMRC_POLYBAR_BORDER_SIZE"
+bspc config border_width "$BSPWMRC_BORDER_SIZE"
 bspc config window_gap "$BSPWMRC_GAP_INNER"
 bspc config left_padding "$((BSPWMRC_GAP_OUTER-BSPWMRC_GAP_INNER))"
 bspc config right_padding "$((BSPWMRC_GAP_OUTER-BSPWMRC_GAP_INNER))"

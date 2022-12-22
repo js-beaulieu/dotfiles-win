@@ -51,7 +51,12 @@ set -gx PNPM_HOME "$HOME/.local/share/pnpm"
 grep -iq Microsoft /proc/version && set -gx BROWSER wslview
 
 # qt on bspwm
-set -gx QT_QPA_PLATFORMTHEME qt6ct
+set -gx QT_QPA_PLATFORMTHEME gtk2
+
+# explicitly set XDG dirs
+set -gx XDG_DATA_HOME $HOME/.local/share
+set -gx XDG_CONFIG_HOME $HOME/.config
+set -gx XDG_STATE_HOME $HOME/.local/state
 
 #----------------------------------------
 # path

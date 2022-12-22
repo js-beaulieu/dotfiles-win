@@ -1,105 +1,103 @@
 local fn = vim.fn
 
--- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    "--filter=blob:none",
+    "--single-branch",
+    "https://github.com/folke/lazy.nvim.git",
+    lazypath,
   })
-  print("Installing packer...")
-  vim.cmd([[packadd packer.nvim]])
 end
+vim.opt.runtimepath:prepend(lazypath)
 
 -- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
+local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
   return
 end
 
--- Have packer use a popup window
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float()
-    end,
-  },
-})
-
-packer.startup(function(use)
-  -- Let packer manage itself
-  use("wbthomason/packer.nvim")
-
-  -- Plugins
-  use("dag/vim-fish")
-  use({
-    "nmac427/guess-indent.nvim",
-    config = function()
-        require("guess-indent").setup({})
-    end,
-  })
-  use({
-    "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = require("me.plugins.markdown").config,
-    ft = { "markdown" },
-  })
-  use({
+lazy.setup({
+  {
     "christoomey/vim-tmux-navigator",
     config = require("me.plugins.tmux").config,
-  })
-  use("editorconfig/editorconfig-vim")
-  use({
-    "ibhagwan/fzf-lua",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    config = require("me.plugins.fzf").config,
-  })
-  use({
+  },
+  {
+    "dag/vim-fish",
+    ft = { "fish" },
+  },
+  "editorconfig/editorconfig-vim",
+  "github/copilot.vim",
+  {
+    "iamcco/markdown-preview.nvim",
+    build = "cd app && npm install",
+    init = require("me.plugins.markdown").config,
+    ft = { "markdown" },
+  },
+  "kdheepak/lazygit.nvim",
+  {
+    "nmac427/guess-indent.nvim",
+    config = function()
+        require("guess-indent").setup()
+    end,
+  },
+  {
     "lewis6991/gitsigns.nvim",
     config = require("me.plugins.gitsigns").config,
-  })
-  use("kdheepak/lazygit.nvim")
-  use("norcalli/nvim-colorizer.lua")
-  use({
+  },
+  "norcalli/nvim-colorizer.lua",
+  {
     "olimorris/onedarkpro.nvim",
     config = require("me.plugins.colorscheme").config,
-  })
-  use({
+  },
+  {
     "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons" },
+    dependencies = { "kyazdani42/nvim-web-devicons" },
     config = require("me.plugins.lualine").config,
-    before = "material",
-  })
-  use({
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
     config = require("me.plugins.filetree").config,
-  })
-  use({
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.0",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
+    },
+    config = require("me.plugins.telescope").config,
+  },
+  {
     "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
-  })
-  use({
+    build = ":TSUpdate",
+  },
+  {
     "phaazon/hop.nvim",
     branch = "v1",
     config = require("me.plugins.hop").config,
-  })
-  use("rbgrouleff/bclose.vim")
-  use("tpope/vim-commentary")
-  use("tpope/vim-surround")
-  use("tpope/vim-vinegar")
-  use({
+  },
+  "rbgrouleff/bclose.vim",
+  {
+    "romgrk/barbar.nvim",
+    dependencies = {"kyazdani42/nvim-web-devicons"},
+    config = require("me.plugins.barbar").config,
+  },
+  "tpope/vim-commentary",
+  "tpope/vim-surround",
+  "tpope/vim-vinegar",
+  {
     "williamboman/nvim-lsp-installer",
-    requires = {
+    dependencies = {
       "neovim/nvim-lspconfig",
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-nvim-lsp",
@@ -112,15 +110,6 @@ packer.startup(function(use)
       { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } },
     },
     config = require("me.plugins.lsp").config,
-  })
-  use({
-    "romgrk/barbar.nvim",
-    requires = {"kyazdani42/nvim-web-devicons"},
-    config = require("me.plugins.barbar").config,
-  })
+  },
+})
 
-  -- Automatically set up configuration after cloning packer.nvim
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)

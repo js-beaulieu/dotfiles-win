@@ -1,11 +1,14 @@
 act
+cnijfilter2
 git-recover-git
 google-chrome
 hideit.sh-git
+insync
 jetbrains-toolbox
 kvantum-theme-qogir-git
 nerd-fonts-ibm-plex-mono
 nordvpn-bin
+openrgb-bin
 polybar-scripts-git
 powershell-bin
 qogir-gtk-theme-git

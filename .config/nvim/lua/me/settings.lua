@@ -2,6 +2,9 @@ local options = {
   -- wildmenu
   wildmode = "longest:full,full",
 
+  -- move swapfiles to their own dir, cause screw it
+  directory =  os.getenv("XDG_STATE_HOME") .. "/nvim/swap",
+
   -- tabs/spaces
   expandtab = true,
   smarttab = true,
@@ -34,8 +37,17 @@ local options = {
   showmatch = true,
   showmode = false,
   signcolumn = "yes",
-  fillchars = "vert:|",
-  laststatus = 3,
+  fillchars = {
+    vert = "│",
+    fold = "⠀",
+    eob = " ", -- suppress ~ at EndOfBuffer
+    diff = "░",
+    msgsep = "‾",
+    foldopen = "▾",
+    foldsep = "│",
+    foldclose = "▸",
+  },
+  laststatus = 2,
   termguicolors = true,
 
   -- use system clipboard

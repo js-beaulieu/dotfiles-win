@@ -1,4 +1,5 @@
 .ssh/*.pub
-.ssh/*.pem
+.ssh/cert/*.pem
 .ssh/config
+.ssh/conf.d/*
 .ssh/id_rsa

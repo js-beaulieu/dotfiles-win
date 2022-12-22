@@ -9,7 +9,7 @@
   spacing: 0;
 
   // variables
-  var-bg: #282a33dd; // matching qogir-dark, original OneDark color is #282a33
+  var-bg: #282a33ee; // matching qogir-dark, original OneDark color is #282a33
   var-fg: #ABB2BF;
   var-blue: #61AFEF;
   var-blue-alt: #61AFEF25;
@@ -19,7 +19,7 @@
   var-font-bold: "IBM Plex Sans Bold 10";
    
   var-window-width: 600px;
-  var-padding: 8px;
+  var-padding: 6px;
   var-spacing: 0 0 8px 0;
   var-border-radius: 5px;
   var-border-size: 2px;
