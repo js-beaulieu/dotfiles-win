@@ -1,6 +1,4 @@
-local fn = vim.fn
-
--- Bootstrap lazy.nvim
+-- bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -14,29 +12,38 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.runtimepath:prepend(lazypath)
 
--- Use a protected call so we don't error out on first use
+-- use a protected call so we don't error out on first use
 local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
+  print("Failed to load lazy.nvim")
   return
 end
 
+-- merge config with config extracted to its own file
+local function load_config(filename, config)
+  local c = require("plugins." .. filename)
+  if config == nil then
+    return c
+  end
+  return vim.tbl_deep_extend("force", c, config)
+end
+
+-- setup plugins
 lazy.setup({
-  {
-    "christoomey/vim-tmux-navigator",
-    config = require("me.plugins.tmux").config,
-  },
+  load_config("tmux", {
+    "christoo/vim-tmux-navigator",
+  }),
   {
     "dag/vim-fish",
     ft = { "fish" },
   },
   "editorconfig/editorconfig-vim",
   "github/copilot.vim",
-  {
+  load_config("markdown", {
     "iamcco/markdown-preview.nvim",
     build = "cd app && npm install",
-    init = require("me.plugins.markdown").config,
     ft = { "markdown" },
-  },
+  }),
   "kdheepak/lazygit.nvim",
   {
     "nmac427/guess-indent.nvim",
@@ -44,21 +51,18 @@ lazy.setup({
         require("guess-indent").setup()
     end,
   },
-  {
+  load_config("gitsigns", {
     "lewis6991/gitsigns.nvim",
-    config = require("me.plugins.gitsigns").config,
-  },
+  }),
   "norcalli/nvim-colorizer.lua",
-  {
+  load_config("colorscheme", {
     "olimorris/onedarkpro.nvim",
-    config = require("me.plugins.colorscheme").config,
-  },
-  {
+  }),
+  load_config("lualine", {
     "nvim-lualine/lualine.nvim",
     dependencies = { "kyazdani42/nvim-web-devicons" },
-    config = require("me.plugins.lualine").config,
-  },
-  {
+  }),
+  load_config("filetree", {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",
     dependencies = {
@@ -66,36 +70,32 @@ lazy.setup({
       "kyazdani42/nvim-web-devicons",
       "MunifTanjim/nui.nvim",
     },
-    config = require("me.plugins.filetree").config,
-  },
-  {
+  }),
+  load_config("telescope", {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.0",
     dependencies = {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
     },
-    config = require("me.plugins.telescope").config,
-  },
+  }),
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
   },
-  {
+  load_config("hop", {
     "phaazon/hop.nvim",
     branch = "v1",
-    config = require("me.plugins.hop").config,
-  },
+  }),
   "rbgrouleff/bclose.vim",
-  {
+  load_config("barbar", {
     "romgrk/barbar.nvim",
     dependencies = {"kyazdani42/nvim-web-devicons"},
-    config = require("me.plugins.barbar").config,
-  },
+  }),
   "tpope/vim-commentary",
   "tpope/vim-surround",
   "tpope/vim-vinegar",
-  {
+  load_config("lsp", {
     "williamboman/nvim-lsp-installer",
     dependencies = {
       "neovim/nvim-lspconfig",
@@ -109,7 +109,6 @@ lazy.setup({
       "L3MON4D3/LuaSnip",
       { "jose-elias-alvarez/null-ls.nvim", requires = { "nvim-lua/plenary.nvim" } },
     },
-    config = require("me.plugins.lsp").config,
-  },
+  }),
 })
 

@@ -88,6 +88,7 @@ man-db
 mariadb-clients
 mousepad
 nano
+ncspot
 neofetch
 neovim
 network-manager-applet
@@ -114,6 +115,7 @@ pipewire-zeroconf
 pkgconf
 plank
 playerctl
+plocate
 polybar
 pulsemixer
 pyenv

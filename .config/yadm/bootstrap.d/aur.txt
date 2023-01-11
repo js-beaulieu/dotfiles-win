@@ -14,6 +14,7 @@ powershell-bin
 qogir-gtk-theme-git
 saml2aws
 slack-desktop
+spotify
 tdrop
 vial-appimage
 visual-studio-code-bin
