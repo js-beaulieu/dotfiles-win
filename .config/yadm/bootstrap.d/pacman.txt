@@ -64,6 +64,7 @@ helvum
 htop
 i2c-tools
 imagemagick
+imv
 jq
 just
 kernel-modules-hook
@@ -102,6 +103,7 @@ openssh
 os-prober
 p7zip
 pacman-contrib
+pamixer
 papirus-icon-theme
 parole
 patch

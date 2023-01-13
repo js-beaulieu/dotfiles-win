@@ -1,5 +1,5 @@
 configuration {
-  combi-modi: "run,drun";
+  combi-modi: "drun,run";
   matching: "fuzzy";
   monitor: -1;
   scroll-method: 1;

@@ -3,7 +3,7 @@
 #
 
 # terminal emulator
-{alt, super} + Return
+super + Return
 	kitty
 
 # dropdown/scratch terminal emulator
@@ -11,7 +11,7 @@ super + alt + Return
 	tdrop -ma -w 50% -x 25% -y 48 -a kitty
 
 # program launcher
-{alt, super} + slash
+super + slash
     rofi -show combi
 
 # window switcher
@@ -22,11 +22,17 @@ alt + Tab
 super + Escape
 	pkill -USR1 -x sxhkd && notify-send "sxhkd" "config reloaded"
 
-#
 # screen locking
-#
 super + alt + l
-	light-locker-command -l
+	slock
+
+# media keys
+XF86Audio{Raise,Lower}Volume
+    pamixer -{i,d} 5
+XF86AudioMute
+	pamixer --toggle-mute
+XF86Audio{Play,Prev,Next}
+	playerctl {play-pause,previous,next}
 
 #
 # bspwm hotkeys

@@ -16,7 +16,7 @@ saml2aws
 slack-desktop
 spotify
 tdrop
-vial-appimage
+via-bin
 visual-studio-code-bin
 win32yank-bin
 xtitle

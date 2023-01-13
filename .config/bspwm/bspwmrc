@@ -46,6 +46,7 @@ autorandr -c
 [ -f "$HOME"/.fehbg ] && "$HOME"/.fehbg
 "$HOME"/.config/polybar/launch.sh &
 xsetroot -cursor_name left_ptr &
+setxkbmap -option "grp:alt_space_toggle" -layout "us,ca" -variant ",fr"
 
 # timeout
 xset s on
@@ -60,7 +61,6 @@ autostart flameshot
 autostart bitwarden bitwarden-desktop
 autostart polkit-gnome-authentication-agent-1 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 autostart playerctl "playerctl -f '{{playerName}}' status --follow > /tmp/playerctl-status"
-autostart light-locker light-locker --no-late-locking --lock-after-screensaver=60 --lock-on-suspend
 autostart xss-lock xss-lock slock
 autostart insync insync start
 
