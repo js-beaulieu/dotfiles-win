@@ -10,6 +10,7 @@ bat
 bison
 bitwarden
 bitwarden-cli
+blueman
 bluez
 bspwm
 btrfs-progs
@@ -151,6 +152,7 @@ thunar-archive-plugin
 thunar-media-tags-plugin
 thunar-volman
 tldr
+tmux
 tree
 ttf-bitstream-vera
 ttf-dejavu

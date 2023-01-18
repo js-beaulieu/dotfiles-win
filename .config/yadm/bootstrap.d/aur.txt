@@ -1,4 +1,5 @@
 act
+cli-visualizer
 cnijfilter2
 git-recover-git
 google-chrome
