@@ -1,12 +1,16 @@
 #!/usr/bin/env bash
 
+# configuration constants
 export QT_STYLE_OVERRIDE=kvantum
-
 export BSPWMRC_GAP_INNER=10
 export BSPWMRC_GAP_OUTER=20
 export BSPWMRC_BORDER_SIZE=2
 export BSPWMRC_POLYBAR_WIDTH="100%:-$((BSPWMRC_GAP_OUTER * 2))"
 export BSPWMRC_POLYBAR_HEIGHT=28
+
+# ssh agent config
+export SSH_AGENT_PID=""
+export SSH_AUTH_SOCK="$(gpgconf --list-dirs agent-ssh-socket 2>/dev/null)"
 
 # wrapper using pgrep to start apps only if they're not already running
 function autostart() {
@@ -56,7 +60,7 @@ autostart sxhkd
 autostart picom picom -b
 autostart dunst "dunst -config <(envsubst < $HOME/.config/dunst/dunstrc)"
 autostart nm-applet
-autostart kdeconnect-indicator
+autostart blueman-applet
 autostart flameshot
 autostart bitwarden bitwarden-desktop
 autostart polkit-gnome-authentication-agent-1 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1

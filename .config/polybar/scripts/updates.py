@@ -18,14 +18,17 @@ def pluralize(count: int, singular: str, plural: str) -> str:
 def handler_count(_: Any) -> None:
     # count pacman updates
     try:
-        checkupdates = subprocess.run(["checkupdates"], stdout=subprocess.PIPE, check=True)
+        checkupdates = subprocess.run(["checkupdates"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=True)
         pacman_updates = checkupdates.stdout.decode("utf-8").splitlines()
     except:
         pacman_updates = []
 
     # count AUR updates
-    checkupdates = subprocess.run(["yay", "-Qum"], stdout=subprocess.PIPE, check=True)
-    aur_updates = checkupdates.stdout.decode("utf-8").splitlines()
+    try:
+        checkupdates = subprocess.run(["yay", "-Qum"], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, check=True)
+        aur_updates = checkupdates.stdout.decode("utf-8").splitlines()
+    except:
+        aur_updates = []
 
     # don't show anything if no updates
     total_updates = len(pacman_updates) + len(aur_updates)
@@ -34,7 +37,7 @@ def handler_count(_: Any) -> None:
         sys.exit(0)
     
     # output the remaining number of updates
-    print(f"{total_updates} {pluralize(total_updates, 'update', 'updates')} available")
+    print(f"{total_updates} {pluralize(total_updates, 'update', 'updates')}")
 
 
 def handler_install(_: Any) -> None:
