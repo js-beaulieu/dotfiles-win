@@ -3,7 +3,7 @@
 	email = me@jsbeaulieu.com
 
 [core]
-	excludesfile = /home/jsbeaulieu/.gitignore
+	excludesfile = %(prefix)//home/jsbeaulieu/.gitignore
 	autocrlf = input
 
 [init]
