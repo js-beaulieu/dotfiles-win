@@ -1,0 +1,16 @@
+[user]
+	name = Jean-Sébastien Beaulieu
+	email = me@jsbeaulieu.com
+
+[core]
+	excludesfile = /home/jsbeaulieu/.gitignore
+	autocrlf = input
+
+[init]
+	defaultBranch = main
+
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
