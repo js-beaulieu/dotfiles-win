@@ -6,3 +6,6 @@ Invoke-Expression (&scoop-search --hook)
 
 # Load starship prompt
 Invoke-Expression (&starship init powershell)
+
+# Load terminal 'dir' icons module
+Import-Module -Name Terminal-Icons
