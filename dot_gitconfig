@@ -10,7 +10,7 @@
 	defaultBranch = main
 
 [safe]
-	directory = %(prefix)///wsl.localhost
+	directory = %(prefix)///wsl$/*
 
 [filter "lfs"]
 	smudge = git-lfs smudge -- %f
