@@ -1,5 +1,6 @@
 # Aliases/functions
 New-Alias -Name touch -Value ni
+New-Alias -Name vim -Value nvim
 
 function which($cmd) {
     (Get-Command $cmd).Definition
