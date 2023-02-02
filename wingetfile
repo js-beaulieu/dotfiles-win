@@ -1,29 +1,8 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2023-02-02T11:37:40.097-00:00",
+	"CreationDate" : "2023-02-02T12:06:33.294-00:00",
 	"Sources" : 
 	[
-		{
-			"Packages" : 
-			[
-				{
-					"PackageIdentifier" : "9P1741LKHQS9"
-				},
-				{
-					"PackageIdentifier" : "9WZDNCRF0083"
-				},
-				{
-					"PackageIdentifier" : "9NBLGGH5R558"
-				}
-			],
-			"SourceDetails" : 
-			{
-				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
-				"Identifier" : "StoreEdgeFD",
-				"Name" : "msstore",
-				"Type" : "Microsoft.Rest"
-			}
-		},
 		{
 			"Packages" : 
 			[
@@ -97,16 +76,22 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
+					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
+					"PackageIdentifier" : "Microsoft.PowerToys"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2008.x64"
 				},
 				{
+					"PackageIdentifier" : "Plex.PlexMediaServer"
+				},
+				{
 					"PackageIdentifier" : "Google.Drive"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
 					"PackageIdentifier" : "GOG.Galaxy"
@@ -115,13 +100,7 @@
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "Plex.PlexMediaServer"
-				},
-				{
 					"PackageIdentifier" : "Soulseek.SoulseekQt"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
