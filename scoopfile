@@ -1,0 +1,150 @@
+{
+    "buckets": [
+        {
+            "Name": "extras",
+            "Source": "https://github.com/ScoopInstaller/Extras",
+            "Updated": "2023-02-02T10:43:14-05:00",
+            "Manifests": 1774
+        },
+        {
+            "Name": "main",
+            "Source": "https://github.com/ScoopInstaller/Main",
+            "Updated": "2023-02-02T07:31:17-05:00",
+            "Manifests": 1152
+        },
+        {
+            "Name": "nerd-fonts",
+            "Source": "https://github.com/matthewjberger/scoop-nerd-fonts",
+            "Updated": "2023-02-01T09:12:40-05:00",
+            "Manifests": 214
+        }
+    ],
+    "apps": [
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2022-11-28T12:51:33.0109054-05:00",
+            "Name": "7zip",
+            "Version": "22.01"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2023-01-31T09:24:11.5785789-05:00",
+            "Name": "bitwarden",
+            "Version": "2023.1.1"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2023-01-31T09:24:13.1153021-05:00",
+            "Name": "bitwarden-cli",
+            "Version": "2023.1.0"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2023-01-30T22:37:44.54185-05:00",
+            "Name": "chezmoi",
+            "Version": "2.29.4"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2022-11-28T12:52:06.7186855-05:00",
+            "Name": "etcher",
+            "Version": "1.10.2"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2022-11-28T12:51:40.9052944-05:00",
+            "Name": "git",
+            "Version": "2.38.1.windows.1"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2023-02-02T10:09:49.1836032-05:00",
+            "Name": "git-aliases",
+            "Version": "0.3.5"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2022-12-21T00:11:31.4772758-05:00",
+            "Name": "micaforeveryone",
+            "Version": "1.2.0.1"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2023-01-09T00:35:25.5552827-05:00",
+            "Name": "neovim",
+            "Version": "0.8.2"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2023-02-01T16:23:31.9743488-05:00",
+            "Name": "obsidian",
+            "Version": "1.1.9"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2023-01-31T16:40:32.9395353-05:00",
+            "Name": "peazip",
+            "Version": "9.0.0"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2023-01-09T09:30:04.4074623-05:00",
+            "Name": "pwsh",
+            "Version": "7.3.1"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2023-01-31T16:32:40.1244627-05:00",
+            "Name": "scoop-search",
+            "Version": "1.3.1"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2023-02-01T22:32:54.5439224-05:00",
+            "Name": "sourcetree",
+            "Version": "3.4.11"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2022-11-28T12:52:07.2210676-05:00",
+            "Name": "starship",
+            "Version": "1.11.0"
+        },
+        {
+            "Source": "main",
+            "Info": "",
+            "Updated": "2022-12-11T00:19:20.2897448-05:00",
+            "Name": "sudo",
+            "Version": "0.2020.01.26"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2023-02-01T15:49:52.2613856-05:00",
+            "Name": "terminal-icons",
+            "Version": "0.10.0"
+        },
+        {
+            "Source": "extras",
+            "Info": "",
+            "Updated": "2022-12-29T00:29:43.5088325-05:00",
+            "Name": "via",
+            "Version": "2.0.5"
+        }
+    ]
+}
