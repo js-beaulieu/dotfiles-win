@@ -10,7 +10,7 @@ function yep {
     Write-Host "Exporting scoop packages..."
     scoop export > "$(chezmoi source-path)/scoopfile"
     Write-Host "Exporting winget packages..."
-    winget export -o "$(chezmoi source-path)/wingetfile" -s winget -s msstore --accept-source-agreements --disable-interactivity
+    winget export -o "$(chezmoi source-path)/wingetfile" --accept-source-agreements --disable-interactivity
 }
 
 # Replace scoop search by scoop-search (much faster)
