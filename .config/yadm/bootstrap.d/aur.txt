@@ -1,5 +1,4 @@
 act
 powershell-bin
 saml2aws
-usql
-yay
+slack-desktop
