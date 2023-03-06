@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
+
+# dependencies
+log "Install dependencies"
+sudo pacman -Syu --noconfirm
+sudo pacman -S --noconfirm --needed git
+
+# install
+log "Install Orchis theme"
+cd /tmp || exit
+git clone https://github.com/vinceliuice/Orchis-theme.git
+cd Orchis-theme || exit
+./install.sh --libadwaita --theme red --color dark --tweaks solid
+cd ..
+rm -rf ./Orchis-theme
+

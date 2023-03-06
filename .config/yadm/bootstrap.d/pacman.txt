@@ -3,7 +3,6 @@ adobe-source-han-sans-cn-fonts
 adobe-source-han-sans-jp-fonts
 adobe-source-han-sans-kr-fonts
 adwaita-icon-theme
-alacritty
 alsa-firmware
 alsa-plugins
 alsa-utils
@@ -15,11 +14,14 @@ base-devel
 bash-completion
 bat
 bind
+bitwarden
 bitwarden-cli
 bluez
 bluez-utils
 btrfs-progs
 cantarell-fonts
+capitaine-cursors
+caprine
 cryptsetup
 cups
 cups-filters
@@ -98,6 +100,7 @@ iwd
 jfsutils
 jq
 just
+kitty
 less
 libappindicator-gtk3
 libdvdcss
@@ -144,12 +147,14 @@ os-prober
 p7zip
 pacman-contrib
 pamixer
+paper-icon-theme
 pavucontrol
 perl
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
 pkgfile
+plank
 plocate
 poppler-glib
 power-profiles-daemon
@@ -171,6 +176,7 @@ rp-pppoe
 rtkit
 rustup
 s-nail
+sassc
 sg3_utils
 shellcheck
 smartmontools
@@ -193,7 +199,9 @@ ttf-bitstream-vera
 ttf-dejavu
 ttf-hack-nerd
 ttf-ibm-plex
+ttf-jetbrains-mono
 ttf-liberation
+ttf-nerd-fonts-symbols-common
 ttf-opensans
 unrar
 unzip
@@ -222,6 +230,5 @@ xorg-xinit
 xorg-xinput
 xorg-xkill
 xorg-xrandr
-xterm
 yadm
 yay

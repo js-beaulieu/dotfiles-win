@@ -1,4 +1,7 @@
 act
+gnome-browser-connector
+google-chrome
 powershell-bin
 saml2aws
 slack-desktop
+visual-studio-code-bin

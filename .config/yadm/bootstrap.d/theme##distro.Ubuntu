@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+. "$(cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd)/.global.sh"
+
+
+# dependencies
+log "Install dependencies"
+sudo apt update
+sudo apt install -y git
+
+# install
+cd /tmp || exit
+git clone https://github.com/vinceliuice/Orchis-theme.git
+cd Orchis-theme || exit
+./install.sh --libadwaita
+cd ..
+rm -rf ./Orchis-theme
+
